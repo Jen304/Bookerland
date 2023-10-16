@@ -14,7 +14,7 @@
     "test:e2e": "playwright test",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "lint:markdownlint": "markdownlint",
-    "format": "prettier --write ."
+    "format": "prettier --write"
   },
   "dependencies": {
     "pinia": "^2.1.6",
