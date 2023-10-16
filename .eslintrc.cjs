@@ -11,5 +11,5 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
-  ignorePatterns: ['**/e2e/**', '**.config.js'],
+  ignorePatterns: ['**/test/e2e/**', '**.config.js'],
 };

@@ -2,8 +2,8 @@
   "name": "bookerland",
   "version": "0.0.0",
   "engines": {
-    "npm": "==9.6.7",
-    "node": "==18.17.1"
+    "node": "v18.17.1",
+    "npm": "9.6.7"
   },
   "scripts": {
     "prepare": "husky install",
