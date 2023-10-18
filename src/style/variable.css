@@ -1,0 +1,55 @@
+/* This file store all global variables */
+
+/* semantic color palette */
+:root {
+  /* accent */
+  --color-accent-50: rgba(243, 250, 245, 1);
+  --color-accent-100: rgba(232, 247, 236, 1);
+  --color-accent-200: rgba(211, 242, 219, 1);
+  --color-accent-300: rgba(183, 235, 196, 1);
+  --color-accent-400: rgba(120, 221, 145, 1);
+  --color-accent-500: rgba(71, 214, 107, 1);
+  --color-accent-600: rgba(34, 170, 68, 1);
+  --color-accent-700: rgba(28, 151, 58, 1);
+  --color-accent-800: rgba(21, 132, 49, 1);
+  --color-accent-900: rgba(17, 111, 40, 1);
+  /* neutral */
+  --color-neutral-50: rgba(255, 255, 255, 1);
+  --color-neutral-100: rgba(245, 245, 245, 1);
+  --color-neutral-200: rgba(228, 230, 229, 1);
+  --color-neutral-300: rgba(211, 213, 213, 1);
+  --color-neutral-400: rgba(161, 165, 164, 1);
+  --color-neutral-500: rgba(113, 117, 117, 1);
+  --color-neutral-600: rgba(80, 84, 83, 1);
+  --color-neutral-700: rgba(63, 65, 65, 1);
+  --color-neutral-800: rgba(37, 39, 39, 1);
+  --color-neutral-900: rgba(23, 23, 23, 1);
+  /* primary */
+  --color-primary-50: rgba(242, 251, 250, 1);
+  --color-primary-100: rgba(231, 248, 246, 1);
+  --color-primary-200: rgba(209, 244, 239, 1);
+  --color-primary-300: rgba(179, 239, 231, 1);
+  --color-primary-400: rgba(113, 228, 213, 1);
+  --color-primary-500: rgba(33, 196, 174, 1);
+  --color-primary-600: rgba(28, 176, 157, 1);
+  --color-primary-700: rgba(22, 156, 138, 1);
+  --color-primary-800: rgba(17, 136, 120, 1);
+  --color-primary-900: rgba(10, 92, 81, 1);
+}
+/* Functional color */
+:root {
+  --color-background: var(--color-primary-50);
+  --color-primary-active: linear-gradient(90deg, var(--color-primary-400) 0%, var(--color-primary-500) 100%);
+  --color-secondary-active: var(--color-neutral-500);
+  --color-heading-1: var(--color-neutral-900));
+  --color-heading-2: var(--color-neutral-800));
+  --color-text-body: var(--color-neutral-700); /* same for subtitle */
+}
+:root {
+  /* Typography */
+  --font-family: Poppins, sans-serif;
+  /* Space */
+  --base-spacing: 0.8rem;
+  /* Border-radius */
+  --base-border-radius: 8px;
+}
