@@ -1,7 +1,7 @@
 <script setup></script>
 <template>
   <header>
-    <nav class="main-header__container">
+    <nav :class="$style['main-header__container']">
       <ul>
         <li>
           <router-link to="/about">About</router-link>
@@ -10,7 +10,7 @@
     </nav>
   </header>
 </template>
-<style scoped>
+<style module>
 .main-header__container ul {
   list-style-type: none;
 }
