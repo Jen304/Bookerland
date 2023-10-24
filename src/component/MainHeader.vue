@@ -1,10 +1,11 @@
 <script setup></script>
 <template>
   <header>
+    <img src="@/asset/logo.png" alt="logo" />
     <nav :class="$style['main-header__container']">
       <ul>
         <li>
-          <router-link to="/about">About</router-link>
+          <router-link to="/about">About project</router-link>
         </li>
       </ul>
     </nav>
