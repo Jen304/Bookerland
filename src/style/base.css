@@ -1,16 +1,21 @@
 :root {
   font-size: 62.5%;
 }
+/* Element style */
 body {
   font-size: 1.4rem;
   font-family: Poppins;
   color: var(--color-text-body);
 }
 
+a {
+  color: var(--color-primary-active);
+}
+
 /* Typography classes */
 .heading-1 {
   color: var(--color-heading-1);
-  font-size: 2.4rem
+  font-size: 2.4rem;
   font-weight: 600;
   letter-spacing: -0.48px;
 }
