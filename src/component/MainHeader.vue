@@ -1,9 +1,19 @@
 <script setup></script>
 <template>
-  <header>
-    <img src="@/asset/logo.png" alt="logo" />
-    <nav :class="$style['main-header__container']">
+  <header :class="[$style['main-header'], 'row f-w-container']">
+    <div class="col-3">
+      <img src="@/asset/logo.png" alt="logo" />
+    </div>
+    <div class="col-6">
+      <slot>
+        <!-- center slot -->
+      </slot>
+    </div>
+    <nav class="col-3">
       <ul>
+        <li>
+          <router-link to="/about">About project</router-link>
+        </li>
         <li>
           <router-link to="/about">About project</router-link>
         </li>
@@ -12,10 +22,25 @@
   </header>
 </template>
 <style module>
-.main-header__container ul {
-  list-style-type: none;
+.main-header {
+  display: flex;
+  align-items: center;
+  height: 6.8rem;
 }
-.main-header__container a {
+.main-header img {
+  height: 2.4rem;
+}
+.main-header nav ul {
+  list-style-type: none;
+  width: 100%;
+  display: flex;
+  gap: calc(var(--base-spacing) * 2);
+  justify-content: flex-end;
+}
+.main-header nav li {
+  display: block;
+}
+.main-header nav a {
   text-decoration: none;
   color: var(--color-secondary-active);
   font-weight: 600;

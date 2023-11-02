@@ -54,6 +54,7 @@
   --font-family: Poppins, sans-serif;
   /* Space */
   --base-spacing: 0.8rem;
+  --max-width: 1200px;
   /* Border-radius */
   --base-border-radius: 8px;
 }

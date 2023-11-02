@@ -49,3 +49,58 @@ a {
 .border-radius-large {
   border-radius: calc(var(--base-border-radius) * 3);
 }
+.f-w-container {
+  width: 100%;
+  margin: auto;
+  max-width: var(--max-width);
+}
+/* flex 12-col grid system */
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  --columns: 12;
+  --base-gap: var(--base-spacing);
+  --base-basis: calc((100% - (var(--base-gap) * (var(--columns) - 1))) / var(--columns));
+}
+[class*='col-'] {
+  --width: 1;
+  --col-basis: calc((var(--width) * var(--base-basis)) + ((var(--width) - 1) * var(--base-gap)));
+  flex-basis: var(--col-basis);
+}
+.col-1 {
+  --width: 1;
+}
+.col-2 {
+  --width: 2;
+}
+.col-3 {
+  --width: 3;
+}
+.col-4 {
+  --width: 4;
+}
+.col-5 {
+  --width: 5;
+}
+.col-6 {
+  --width: 6;
+}
+.col-7 {
+  --width: 7;
+}
+.col-8 {
+  --width: 8;
+}
+.col-9 {
+  --width: 9;
+}
+.col-10 {
+  --width: 10;
+}
+.col-11 {
+  --width: 11;
+}
+.col-12 {
+  --width: 12;
+}

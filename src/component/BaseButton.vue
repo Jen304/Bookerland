@@ -1,16 +1,13 @@
-<script>
-export default {
-  name: 'BaseButton',
-  props: {
-    size: {
-      type: String,
-      default: 'regular',
-      validator: (value) => {
-        return ['regular'].includes(value);
-      },
+<script setup>
+defineProps({
+  size: {
+    type: String,
+    default: 'regular',
+    validator: (value) => {
+      return ['regular'].includes(value);
     },
   },
-};
+});
 </script>
 
 <template>
