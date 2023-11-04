@@ -20,13 +20,14 @@ defineProps({
 .base-button {
   background: var(--color-primary-button);
   color: var(--color-neutral-100);
-  border-radius: 8px;
+  border-radius: var(--base-border-radius);
   border: none;
   display: flex;
-  height: 38px;
-  padding: 10px;
+  height: 3.8rem;
+  padding: 0 1.6rem;
   justify-content: center;
   align-items: center;
   gap: calc(var(--base-spacing) / 2);
+  font-weight: 600;
 }
 </style>
