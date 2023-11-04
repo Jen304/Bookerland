@@ -7,5 +7,5 @@ defineProps({
 });
 </script>
 <template>
-  <i class="material-symbols-rounded"> {{ iconName }} </i>
+  <i class="material-symbols-rounded" v-bind="$attrs"> {{ iconName }} </i>
 </template>

@@ -1,9 +1,32 @@
 <script setup>
 import BaseIcon from '@/component/BaseIcon.vue';
-defineProps({
+import { computed } from 'vue';
+const props = defineProps({
   prefixIcon: {
     type: String,
     default: '',
+  },
+  clearable: {
+    type: Boolean,
+    default: false,
+  },
+  modelValue: {
+    type: String,
+    default: '',
+  },
+});
+const emit = defineEmits(['update:modelValue']);
+const hasClearButton = computed(() => props.clearable && inputValue.value.length > 0);
+// clear input value when clear button is clicked
+const clearInputValue = () => {
+  emit('update:modelValue', '');
+};
+const inputValue = computed({
+  get() {
+    return props.modelValue;
+  },
+  set(value) {
+    emit('update:modelValue', value);
   },
 });
 </script>
@@ -12,7 +35,8 @@ defineProps({
     <slot name="inner-left">
       <BaseIcon v-if="prefixIcon" :class="$style['prefix-icon']" :iconName="prefixIcon" />
     </slot>
-    <input v-bind="$attrs" />
+    <input v-bind="$attrs" v-model="inputValue" />
+    <BaseIcon v-if="hasClearButton" iconName="close" @click.stop="clearInputValue" />
     <slot name="inner-right"> </slot>
   </div>
 </template>
@@ -41,11 +65,11 @@ defineProps({
 .base-input input:focus {
   outline: none;
 }
-.base-input input::placeholder {
+.base-input input::placeholder,
+.base-input i {
   color: var(--color-neutral-400);
 }
 .base-input .prefix-icon {
-  color: var(--color-neutral-400);
   margin-left: calc(var(--base-spacing) * 1.5);
 }
 .base-input:focus-within .prefix-icon {
