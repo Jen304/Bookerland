@@ -1,19 +1,31 @@
-<script setup></script>
+<script setup>
+defineProps({
+  onlyNav: {
+    type: Boolean,
+    default: false,
+  },
+});
+</script>
 <template>
-  <header :class="[$style['main-header'], 'row f-w-container']">
-    <div class="col-3">
+  <header
+    :class="[
+      $style['main-header'],
+      'row f-w-container',
+      {
+        [$style['only-nav']]: onlyNav,
+      },
+    ]"
+  >
+    <div class="col-3" v-if="!onlyNav">
       <img src="@/asset/logo.png" alt="logo" />
     </div>
-    <div class="col-6">
+    <div class="col-6" v-if="!onlyNav">
       <slot>
         <!-- center slot -->
       </slot>
     </div>
     <nav class="col-3">
       <ul>
-        <li>
-          <router-link to="/about">About project</router-link>
-        </li>
         <li>
           <router-link to="/about">About project</router-link>
         </li>
@@ -44,5 +56,8 @@
   text-decoration: none;
   color: var(--color-secondary-active);
   font-weight: 600;
+}
+.main-header.only-nav nav {
+  --width: 12;
 }
 </style>
