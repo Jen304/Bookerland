@@ -12,6 +12,12 @@ body {
 a {
   color: var(--color-primary-active);
 }
+a:hover {
+  filter: brightness(1.2);
+}
+a:focus {
+  outline-color: var(--color-primary-active);
+}
 
 /* Typography classes */
 .heading-1 {

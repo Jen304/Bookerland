@@ -30,4 +30,10 @@ defineProps({
   gap: calc(var(--base-spacing) / 2);
   font-weight: 600;
 }
+.base-button:hover {
+  filter: brightness(1.1);
+}
+.base-button:focus {
+  outline-color: var(--color-primary-active);
+}
 </style>

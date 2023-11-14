@@ -1,6 +1,6 @@
 <script setup>
 import BaseIcon from '@/component/BaseIcon.vue';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 const props = defineProps({
   prefixIcon: {
     type: String,
@@ -21,6 +21,7 @@ const hasClearButton = computed(() => props.clearable && inputValue.value.length
 const clearInputValue = () => {
   emit('update:modelValue', '');
 };
+
 const inputValue = computed({
   get() {
     return props.modelValue;
@@ -29,13 +30,18 @@ const inputValue = computed({
     emit('update:modelValue', value);
   },
 });
+const input = ref(null);
+// Focus input when prefix icon is clicked
+const focusInput = () => {
+  input.value.focus();
+};
 </script>
 <template>
-  <div :class="$style['base-input']">
+  <div :class="$style['base-input']" @click="focusInput">
     <slot name="inner-left">
       <BaseIcon v-if="prefixIcon" :class="$style['prefix-icon']" :iconName="prefixIcon" />
     </slot>
-    <input v-bind="$attrs" v-model="inputValue" />
+    <input v-bind="$attrs" v-model="inputValue" ref="input" />
     <BaseIcon v-if="hasClearButton" iconName="close" @click.stop="clearInputValue" />
     <slot name="inner-right"> </slot>
   </div>
