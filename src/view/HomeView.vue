@@ -33,7 +33,7 @@ import BookSearchBar from '@/component/BookSearchBar.vue';
 }
 .search-bar img[alt='Book Smile'] {
   margin: auto;
-  margin-top: calc(var(--base-spacing) * 3);
+  margin-top: calc(var(--base-spacing) * 4);
   max-width: 28rem;
   height: 100%;
   display: block;
