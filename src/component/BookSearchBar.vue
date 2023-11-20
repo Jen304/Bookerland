@@ -8,7 +8,13 @@ const bookSearchBarRef = ref('');
 <template>
   <base-input prefix-icon="search" placeholder="Search book" clearable v-model="bookSearchBarRef">
     <template #inner-right>
-      <base-button>Search</base-button>
+      <base-button :class="$style['search-button']">Search</base-button>
     </template>
   </base-input>
 </template>
+<style module>
+.search-button {
+  height: 100%;
+  width: 8.8rem;
+}
+</style>

@@ -42,14 +42,19 @@ const focusInput = () => {
       <BaseIcon v-if="prefixIcon" :class="$style['prefix-icon']" :iconName="prefixIcon" />
     </slot>
     <input v-bind="$attrs" v-model="inputValue" ref="input" />
-    <BaseIcon v-if="hasClearButton" iconName="close" @click.stop="clearInputValue" />
+    <BaseIcon
+      v-if="hasClearButton"
+      iconName="close"
+      @click.stop="clearInputValue"
+      :class="$style['clear-icon']"
+    />
     <slot name="inner-right"> </slot>
   </div>
 </template>
 
 <style module>
 .base-input {
-  height: 4rem;
+  height: 4.8rem;
   background: var(--color-neutral-50);
   border-radius: var(--base-border-radius);
   border: 0.1rem solid var(--color-neutral-200);
@@ -77,6 +82,10 @@ const focusInput = () => {
 }
 .base-input .prefix-icon {
   margin-left: calc(var(--base-spacing) * 1.5);
+}
+.base-input .clear-icon {
+  cursor: pointer;
+  margin-right: calc(var(--base-spacing) * 0.5);
 }
 .base-input:focus-within .prefix-icon {
   color: var(--color-primary-active);
