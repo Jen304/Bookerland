@@ -8,7 +8,7 @@
       <li></li>
       <li></li>
     </ul>
-    <div class="shelf"></div>
+    <div class="bar"></div>
   </div>
 </template>
 <style scoped>
@@ -70,7 +70,7 @@
 .main-loading li:nth-child(1):after {
   top: calc(var(--load-item-height) * 0.5);
   height: calc(var(--load-base-size) * 0.5);
-  background-color: purple;
+  background-color: var(--color-accent-200);
 }
 .main-loading li:nth-child(2):before,
 .main-loading li:nth-child(2):after,
@@ -78,17 +78,17 @@
 .main-loading li:nth-child(5):after {
   height: calc(var(--load-base-size) * 2);
   /* Border top and bottom */
-  border-block: calc(var(--load-base-size) * 0.5) solid blue;
+  border-block: calc(var(--load-base-size) * 0.5) solid var(--color-accent-50);
 }
 .main-loading li:nth-child(3):before,
 .main-loading li:nth-child(3):after,
 .main-loading li:nth-child(6):after {
   --circle-size: calc(var(--load-base-size) * 1.6);
-  left: 25%;
+  left: 30%;
   width: var(--circle-size);
   height: var(--circle-size);
   border-radius: 50%;
-  border: calc(var(--load-base-size) * 0.5) solid orange;
+  border: calc(var(--load-base-size) * 0.5) solid var(--color-accent-50);
 }
 .main-loading li:nth-child(2):after,
 .main-loading li:nth-child(1):after,
@@ -99,17 +99,16 @@
 .main-loading li:nth-child(4):before {
   top: calc(var(--load-item-height) * 0.3);
   height: calc(var(--load-item-height) * 0.15);
-  border-block: calc(var(--load-base-size) * 0.5) solid green;
+  border-block: calc(var(--load-base-size) * 0.5) solid var(--color-accent-50);
 }
 .main-loading li:nth-child(6):before {
   top: calc(var(--load-item-height) * 0.56);
   bottom: calc(var(--load-item-height) * 0.1);
-  height: calc(var(--load-base-size) * 0.3);
-  background-color: black;
+  height: calc(var(--load-base-size) * 0.5);
+  background-color: var(--color-accent-50);
 }
 .main-loading li:nth-child(6):after {
-  top: calc(var(--load-item-height) * 0.67);
-  left: 28%;
+  top: calc(var(--load-item-height) * 0.68);
 }
 .main-loading li:nth-child(2) {
   --item-order: 2;
@@ -126,31 +125,30 @@
 .main-loading li:nth-child(6) {
   --item-order: 6;
 }
-.shelf {
+.bar {
   margin: auto;
   position: relative;
   left: calc(var(--load-base-size) * (-3));
   width: calc(var(--load-base-size) * 33);
   height: calc(var(--load-base-size) * 0.6);
-  background-color: blue;
+  background-color: var(--color-primary-400);
   border-radius: var(--base-border-radius);
 }
-.shelf:before,
-.shelf:after {
+.bar:before,
+.bar:after {
   content: '';
   position: absolute;
   top: 160%;
   left: 3%;
   width: 100%;
   height: 150%;
-  /* background: var(--color-primary-400); */
-  background-image: radial-gradient(var(--color-primary-400) 30%, transparent 0);
+  background-image: radial-gradient(var(--color-primary-500) 30%, transparent 0);
   background-size: var(--load-base-size);
   background-position: 0;
   --move-duration: calc(var(--base-transition-duration) / 10);
   animation: move var(--move-duration) linear infinite;
 }
-.shelf:after {
+.bar:after {
   top: 300%;
   left: 6%;
 }
