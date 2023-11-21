@@ -1,5 +1,17 @@
+<script setup>
+defineProps({
+  size: {
+    type: String,
+    default: '0.8rem',
+    // include rem size
+    validator: (value) => {
+      value.includes('rem');
+    },
+  },
+});
+</script>
 <template>
-  <div class="main-loading">
+  <div :class="$style['main-loading']">
     <ul>
       <li></li>
       <li></li>
@@ -8,12 +20,12 @@
       <li></li>
       <li></li>
     </ul>
-    <div class="bar"></div>
+    <div :class="$style['bar']"></div>
   </div>
 </template>
-<style scoped>
+<style module>
 .main-loading {
-  --load-base-size: 1rem;
+  --load-base-size: v-bind(size);
   position: relative;
   left: 50%;
   top: calc(var(--load-base-size) * 13);
@@ -41,7 +53,7 @@
   transform-origin: bottom left;
   transform: translateX(var(--load-item-height));
   --travel-x-position: calc(var(--load-base-size) * 33);
-  --travel-duration: calc(var(--base-transition-duration) * 1.2);
+  --travel-duration: calc(var(--base-transition-duration) * 1.1);
   --item-order: 1;
   animation: travel var(--travel-duration) linear infinite;
   animation-delay: calc(var(--travel-duration) * ((var(--item-order) - 1) / 6));
@@ -53,7 +65,7 @@
   --load-item-height: calc(var(--load-base-size) * 11.5);
 }
 .main-loading li:nth-child(5) {
-  --load-item-height: calc(var(--load-base-size) * 12.75);
+  --load-item-height: calc(var(--load-base-size) * 12.8);
 }
 .main-loading li:nth-child(6) {
   --load-item-height: calc(var(--load-base-size) * 11);
@@ -70,7 +82,7 @@
 .main-loading li:nth-child(1):after {
   top: calc(var(--load-item-height) * 0.5);
   height: calc(var(--load-base-size) * 0.5);
-  background-color: var(--color-accent-200);
+  background-color: var(--color-neutral-50);
 }
 .main-loading li:nth-child(2):before,
 .main-loading li:nth-child(2):after,
@@ -166,26 +178,25 @@
     transform: translateX(var(--travel-x-position)) rotateZ(0deg) scaleY(1);
   }
   6.5% {
-    transform: translateX(calc(var(--travel-x-position) * (1 - 0.065))) rotateZ(0deg) scaleY(1.1);
+    transform: translateX(calc(var(--travel-x-position) * (1 - 0.065))) scaleY(1.1);
   }
   8.8% {
-    transform: translateX(calc(var(--travel-x-position) * (1 - 0.088))) rotateZ(0deg) scaleY(1);
+    transform: translateX(calc(var(--travel-x-position) * (1 - 0.088))) scaleY(1);
   }
   10% {
     opacity: 1;
-    transform: translateX(calc(var(--travel-x-position) * (1 - 0.1))) rotateZ(0deg);
   }
   17.6% {
-    transform: translateX(calc(var(--travel-x-position) * (1 - 0.176))) rotateZ(-30deg);
+    transform: translateX(calc(var(--travel-x-position) * (1 - 0.18)));
   }
   45% {
     transform: translateX(calc(var(--travel-x-position) * (1 - 0.45))) rotateZ(-30deg);
   }
   49.5% {
-    transform: translateX(calc(var(--travel-x-position) * (1 - 0.5))) rotateZ(-45deg);
+    transform: translateX(calc(var(--travel-x-position) * (1 - 0.5))) rotateZ(-40deg);
   }
   61.5% {
-    transform: translateX(calc(var(--travel-x-position) * (1 - 0.62))) rotateZ(-45deg);
+    transform: translateX(calc(var(--travel-x-position) * (1 - 0.62))) rotateZ(-50deg);
   }
   67% {
     transform: translateX(calc(var(--travel-x-position) * (1 - 0.67))) rotateZ(-60deg);
