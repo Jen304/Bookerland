@@ -54,4 +54,6 @@
   --max-width: 1200px;
   /* Border-radius */
   --base-border-radius: 8px;
+  /* Animation  time */
+  --base-transition-duration: 3s;
 }
