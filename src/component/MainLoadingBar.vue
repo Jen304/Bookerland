@@ -3,10 +3,8 @@ defineProps({
   size: {
     type: String,
     default: '0.8rem',
-    // include rem size
-    validator: (value) => {
-      value.includes('rem');
-    },
+    // include rem unit value
+    validator: (value) => value.includes('rem'),
   },
 });
 </script>
