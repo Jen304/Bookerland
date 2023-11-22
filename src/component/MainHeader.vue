@@ -1,4 +1,5 @@
 <script setup>
+import BookSearchBar from '@/component/BookSearchBar.vue';
 defineProps({
   onlyNav: {
     type: Boolean,
@@ -22,6 +23,7 @@ defineProps({
     <div class="col-6" v-if="!onlyNav">
       <slot>
         <!-- center slot -->
+        <BookSearchBar />
       </slot>
     </div>
     <nav class="col-3">
@@ -37,7 +39,7 @@ defineProps({
 .main-header {
   display: flex;
   align-items: center;
-  height: 6.8rem;
+  height: 8.4rem;
 }
 .main-header img {
   height: 2.4rem;
