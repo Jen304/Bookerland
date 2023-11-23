@@ -26,7 +26,7 @@ defineProps({
   --load-base-size: v-bind(size);
   position: relative;
   left: 50%;
-  top: calc(var(--load-base-size) * 13);
+  top: calc(var(--load-base-size) * 16);
   transform: translate(-50%, -50%);
 }
 .main-loading ul {

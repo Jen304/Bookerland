@@ -27,7 +27,7 @@ defineProps({
       </slot>
     </div>
     <nav class="col-3">
-      <ul>
+      <ul class="no-list-style">
         <li>
           <router-link to="/about">About project</router-link>
         </li>
@@ -42,10 +42,9 @@ defineProps({
   height: 8.4rem;
 }
 .main-header img {
-  height: 2.4rem;
+  height: 2.6rem;
 }
 .main-header nav ul {
-  list-style-type: none;
   width: 100%;
   display: flex;
   gap: calc(var(--base-spacing) * 2);

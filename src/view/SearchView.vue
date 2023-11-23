@@ -2,6 +2,7 @@
 import { provide, watch, ref, onMounted } from 'vue';
 import MainLayout from './layout/MainLayout.vue';
 import MainLoadingBar from '@/component/MainLoadingBar.vue';
+import BookCard from '@/component/BookCard.vue';
 
 const props = defineProps({
   query: {
@@ -41,9 +42,23 @@ watch(
 </script>
 <template>
   <MainLayout>
-    <main>
+    <main class="f-w-container row flex-align-center">
+      <!-- <MainLoadingBar /> -->
       <MainLoadingBar v-if="isLoadingSearchResult" />
-      <section v-else>About {{ totalSearchResult }} books found</section>
+      <div v-else class="col-6 m-auto">
+        <h1 class="body-text-large text-semi-bold">About {{ totalSearchResult }} books found</h1>
+        <ul :class="['no-list-style d-flex', $style['book-list']]">
+          <li v-for="book in searchResult" :key="book.id">
+            <BookCard :value="book" />
+          </li>
+        </ul>
+      </div>
     </main>
   </MainLayout>
 </template>
+<style module>
+.book-list {
+  gap: calc(var(--base-spacing) * 3);
+  flex-direction: column;
+}
+</style>

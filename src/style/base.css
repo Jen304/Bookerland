@@ -18,35 +18,38 @@ a:hover {
 a:focus {
   outline-color: var(--color-primary-active);
 }
-
 /* Typography classes */
 .heading-1 {
   color: var(--color-heading-1);
   font-size: 2.4rem;
   font-weight: 600;
-  letter-spacing: -0.48px;
   line-height: 1.5;
 }
 .heading-2 {
   color: var(--color-heading-2);
   font-size: 1.8rem;
   font-weight: 600;
-  letter-spacing: -0.36px;
   line-height: 1.5;
 }
 .body-text-large {
   font-size: 1.6rem;
   font-weight: 400;
-  letter-spacing: -0.32px;
+  line-height: 1.5;
 }
 .body-text-regular {
   font-size: 1.4rem;
   font-weight: 400;
-  letter-spacing: -0.28px;
+  line-height: 1.5;
 }
 .body-text-small {
   font-size: 1.2rem;
   font-weight: 400;
+}
+.text-semi-bold {
+  font-weight: 500;
+}
+.text-bold {
+  font-weight: 600;
 }
 /* Border radius class */
 .border-radius-main {
@@ -58,10 +61,29 @@ a:focus {
 .border-radius-large {
   border-radius: calc(var(--base-border-radius) * 3);
 }
+/* Listing */
+ul.no-list-style {
+  list-style-type: none;
+  padding: 0;
+}
+/* Margin */
+.m-auto {
+  margin: auto;
+}
 .f-w-container {
   width: 100%;
   margin: auto;
   max-width: var(--max-width);
+}
+/* flex */
+.d-flex {
+  display: flex;
+}
+.d-flex .h-center {
+  justify-content: center;
+}
+.d-flex .column {
+  flex-direction: column;
 }
 /* flex 12-col grid system */
 .row {
@@ -76,6 +98,7 @@ a:focus {
   --width: 1;
   --col-basis: calc((var(--width) * var(--base-basis)) + ((var(--width) - 1) * var(--base-gap)));
   flex-basis: var(--col-basis);
+  position: relative;
 }
 .col-1 {
   --width: 1;
