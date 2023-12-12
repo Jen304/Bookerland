@@ -16,13 +16,18 @@ const props = defineProps({
 </template>
 <style module>
 .tag-list {
-  gap: calc(var(--base-spacing) / 2);
+  gap: var(--base-spacing);
+  /* wrap */
+  flex-wrap: wrap;
 }
 .tag-list li {
+  min-width: 7rem;
+  text-align: center;
   background-color: var(--color-neutral-100);
   padding: var(--base-spacing) calc(var(--base-spacing) * 1.5);
   border-radius: calc(var(--base-border-radius) * 2);
   color: var(--color-neutral-500);
   font-size: var(--font-size-small);
+  margin-bottom: var(--base-spacing);
 }
 </style>

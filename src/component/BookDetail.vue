@@ -37,10 +37,10 @@ const onClose = () => {
       <div>
         <!-- Title -->
         <h1 class="heading-1">{{ displayValue.title }}</h1>
-        <h2 class="body-text-large">{{ displayValue.subtitle }}</h2>
-        <div :class="[$style['metadata'], 'd-flex f-column']">
+        <h2 class="sub-heading-1">{{ displayValue.subtitle }}</h2>
+        <div :class="[$style['metadata'], 'd-flex f-column body-text-regular']">
           <!-- Author -->
-          <ul class="body-text-regular inline-list">
+          <ul class="inline-list">
             By
             <li v-for="author in displayValue.author" :key="author">
               {{ author }}
@@ -54,8 +54,8 @@ const onClose = () => {
       </div>
     </div>
     <div>
-      <h3>Description</h3>
-      <p :class="['body-text-regular', $style['description']]">{{ displayValue.description }}</p>
+      <h3 class="heading-2">Description</h3>
+      <p :class="['body-text-regular']">{{ displayValue.description }}</p>
     </div>
     <BaseButton display-type="secondary">Read more on Google Book</BaseButton>
   </section>
@@ -63,7 +63,7 @@ const onClose = () => {
 <style module>
 .book-detail {
   background-color: var(--color-neutral-50);
-  gap: calc(var(--base-spacing) * 1.5);
+  gap: calc(var(--base-spacing) * 2);
   padding: calc(var(--base-spacing) * 3);
 }
 .book-detail .close-button {
@@ -73,30 +73,29 @@ const onClose = () => {
 }
 .brief-info {
   gap: calc(var(--base-spacing) * 2);
-  flex-basis: 50%;
 }
 .brief-info h1 {
   margin-top: calc(var(--base-spacing) * 2);
 }
 .book-detail img {
   width: 100%;
-  aspect-ratio: 2 / 3;
-  flex-basis: 35%;
+  aspect-ratio: 2 / 2.8;
+  flex: 1 0 33%;
   border-radius: var(--base-border-radius);
   box-shadow: 0px 0px 4px 2px rgba(111, 132, 129, 0.5);
 }
 /* Add comma between item list */
-.book-detail ul:first-child li:not(:last-child)::after {
+.metadata ul:first-child li:not(:last-child)::after {
   content: ',';
 }
 .book-detail .metadata {
-  margin-top: calc(var(--base-spacing) * 0.5);
+  margin-top: calc(var(--base-spacing) * 1.5);
   color: var(--color-neutral-500);
-  gap: var(--base-spacing);
+  gap: calc(var(--base-spacing) / 2);
 }
 /* last child of metadata */
 .book-detail .metadata > *:last-child {
-  margin-top: calc(var(--base-spacing) * 2);
+  margin-top: calc(var(--base-spacing) * 0.5);
 }
 .book-detail .year:before {
   content: '•';
