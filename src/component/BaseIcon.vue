@@ -1,11 +1,11 @@
 <script setup>
 defineProps({
-  iconName: {
+  name: {
     type: String,
     default: '',
   },
 });
 </script>
 <template>
-  <i class="material-symbols-rounded" v-bind="$attrs"> {{ iconName }} </i>
+  <i class="material-symbols-rounded" v-bind="$attrs"> {{ name }} </i>
 </template>

@@ -39,12 +39,12 @@ const focusInput = () => {
 <template>
   <div :class="$style['base-input']" @click="focusInput">
     <slot name="inner-left">
-      <BaseIcon v-if="prefixIcon" :class="$style['prefix-icon']" :iconName="prefixIcon" />
+      <BaseIcon v-if="prefixIcon" :class="$style['prefix-icon']" :name="prefixIcon" />
     </slot>
     <input v-bind="$attrs" v-model="inputValue" ref="input" />
     <BaseIcon
       v-if="hasClearButton"
-      iconName="close"
+      name="close"
       @click.stop="clearInputValue"
       :class="$style['clear-icon']"
     />

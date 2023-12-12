@@ -18,6 +18,10 @@ a:hover {
 a:focus {
   outline-color: var(--color-primary-active);
 }
+p {
+  /* Allow break */
+  word-break: break-word;
+}
 /* Typography classes */
 .heading-1 {
   color: var(--color-heading-1);
@@ -62,9 +66,14 @@ a:focus {
   border-radius: calc(var(--base-border-radius) * 3);
 }
 /* Listing */
+ul.inline-list,
 ul.no-list-style {
   list-style-type: none;
   padding: 0;
+}
+ul.inline-list {
+  display: flex;
+  gap: calc(var(--base-spacing) * 0.5);
 }
 /* Margin */
 .m-auto {
@@ -78,12 +87,16 @@ ul.no-list-style {
 /* flex */
 .d-flex {
   display: flex;
+  gap: var(--base-spacing);
 }
-.d-flex .h-center {
+.d-flex .f-h-center {
   justify-content: center;
 }
-.d-flex .column {
+.d-flex .f-column {
   flex-direction: column;
+}
+.d-flex .f-wrap {
+  flex-wrap: wrap;
 }
 /* flex 12-col grid system */
 .row {
@@ -135,4 +148,8 @@ ul.no-list-style {
 }
 .col-12 {
   --width: 12;
+}
+/* Cursor */
+.cursor-pointer {
+  cursor: pointer;
 }

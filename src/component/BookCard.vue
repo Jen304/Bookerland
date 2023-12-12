@@ -18,15 +18,15 @@ const valueData = computed(() => {
 });
 </script>
 <template>
-  <div :class="[$style['book-card'], 'd-flex h-center']">
+  <div :class="[$style['book-card'], 'd-flex h-center']" v-bind="$attrs">
     <img :src="valueData.img" alt="book cover" />
     <!-- Title -->
     <div :class="$style['content']">
-      <div :class="['d-flex column', $style['metadata']]">
+      <div :class="['d-flex f-column', $style['metadata']]">
         <h2 class="heading-2">{{ valueData.title }}</h2>
         <p class="body-text-large">{{ valueData.subtitle }}</p>
         <!-- Author -->
-        <ul class="no-list-style body-text-regular">
+        <ul class="inline-list body-text-regular">
           By
           <li v-for="author in valueData.author" :key="author">
             {{ author }}
@@ -72,9 +72,6 @@ const valueData = computed(() => {
   padding: 0;
 }
 .book-card .metadata ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: calc(var(--base-spacing) * 0.5);
   color: var(--color-neutral-500);
 }
 /* Add comma between item list */

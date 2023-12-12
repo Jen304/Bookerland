@@ -3,7 +3,7 @@ import BaseInput from '@/component/BaseInput.vue';
 import BaseButton from '@/component/BaseButton.vue';
 import { ref, inject } from 'vue';
 import { useRouter } from 'vue-router';
-const searchQuery = inject('searchQuery');
+const searchQuery = inject('searchQuery', undefined);
 // define refs
 const searchInput = searchQuery ? ref(searchQuery.value) : ref('');
 const router = useRouter();
@@ -13,11 +13,11 @@ const onSubmit = () => {
 </script>
 <template>
   <form @submit.prevent="onSubmit">
-    <base-input prefix-icon="search" placeholder="Search book" clearable v-model="searchInput">
+    <BaseInput prefix-icon="search" placeholder="Search book" clearable v-model="searchInput">
       <template #inner-right>
-        <base-button :class="$style['search-button']" type="submit">Search</base-button>
+        <BaseButton :class="$style['search-button']" type="submit">Search</BaseButton>
       </template>
-    </base-input>
+    </BaseInput>
   </form>
 </template>
 <style module>
