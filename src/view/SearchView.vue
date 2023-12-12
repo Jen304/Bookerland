@@ -3,7 +3,7 @@ import { provide, watch, ref, onMounted } from 'vue';
 import MainLayout from './layout/MainLayout.vue';
 import MainLoadingBar from '@/component/MainLoadingBar.vue';
 import BookCard from '@/component/BookCard.vue';
-
+import BookDetail from '@/component/BookDetail.vue';
 const props = defineProps({
   query: {
     type: String,
@@ -39,19 +39,34 @@ watch(
     getSearchResult(query);
   },
 );
+// open close book detail
+const isBookDetailOpen = ref(false);
+const openBookDetail = (value) => {
+  bookDetailValue.value = value;
+  isBookDetailOpen.value = true;
+};
+const closeBookDetail = () => {
+  isBookDetailOpen.value = false;
+};
+const bookDetailValue = ref(null);
 </script>
 <template>
   <MainLayout>
     <main class="f-w-container row flex-align-center">
       <!-- <MainLoadingBar /> -->
-      <MainLoadingBar v-if="isLoadingSearchResult" />
-      <div v-else class="col-6 m-auto">
-        <h1 class="body-text-large text-semi-bold">About {{ totalSearchResult }} books found</h1>
-        <ul :class="['no-list-style d-flex', $style['book-list']]">
-          <li v-for="book in searchResult" :key="book.id">
-            <BookCard :value="book" />
-          </li>
-        </ul>
+      <div class="col-6 m-auto">
+        <MainLoadingBar v-if="isLoadingSearchResult" />
+        <div v-else>
+          <h1 class="body-text-large text-semi-bold">About {{ totalSearchResult }} books found</h1>
+          <ul :class="['no-list-style d-flex', $style['book-list']]">
+            <li v-for="book in searchResult" :key="book.id">
+              <BookCard :value="book" @click="openBookDetail(book)" />
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-6" v-show="isBookDetailOpen">
+        <BookDetail @close="closeBookDetail" :value="bookDetailValue" />
       </div>
     </main>
   </MainLayout>
