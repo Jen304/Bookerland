@@ -52,9 +52,17 @@ const bookDetailValue = ref(null);
 </script>
 <template>
   <MainLayout>
-    <main class="f-w-container row flex-align-center">
+    <main :class="['f-w-container row flex-align-center', $style['search-view']]">
       <!-- <MainLoadingBar /> -->
-      <div class="col-6 m-auto">
+      <div
+        :class="[
+          'm-auto',
+          {
+            'col-6': !isBookDetailOpen,
+            'col-5': isBookDetailOpen,
+          },
+        ]"
+      >
         <MainLoadingBar v-if="isLoadingSearchResult" />
         <div v-else>
           <h1 class="body-text-large text-semi-bold">About {{ totalSearchResult }} books found</h1>
@@ -65,15 +73,20 @@ const bookDetailValue = ref(null);
           </ul>
         </div>
       </div>
-      <div class="col-6" v-show="isBookDetailOpen">
+      <div class="col-7" v-show="isBookDetailOpen">
         <BookDetail @close="closeBookDetail" :value="bookDetailValue" />
       </div>
     </main>
   </MainLayout>
 </template>
 <style module>
+.search-view {
+  --base-gap: calc(var(--base-spacing) * 8);
+  margin-top: var(--base-spacing);
+}
 .book-list {
   gap: calc(var(--base-spacing) * 3);
   flex-direction: column;
+  margin-top: calc(var(--base-spacing) * 2);
 }
 </style>

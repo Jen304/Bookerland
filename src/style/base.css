@@ -62,13 +62,13 @@ p {
   font-weight: 600;
 }
 /* Border radius class */
-.border-radius-main {
+.b-r-main {
   border-radius: var(--base-border-radius);
 }
-.border-radius-small {
+.b-r-small {
   border-radius: calc(var(--base-border-radius) / 2);
 }
-.border-radius-large {
+.b-r-large {
   border-radius: calc(var(--base-border-radius) * 3);
 }
 /* Listing */

@@ -30,10 +30,10 @@ const onClose = () => {
 };
 </script>
 <template>
-  <section :class="$style['book-detail']">
+  <section :class="[$style['book-detail'], 'b-r-main']">
     <BaseIcon name="close" @click="onClose" :class="[$style['close-button'], 'cursor-pointer']" />
     <div :class="[$style['brief-info'], 'd-flex']">
-      <img :src="displayValue.img" alt="book cover" />
+      <img :src="displayValue.img" alt="book cover" class="b-r-main" />
       <div>
         <!-- Title -->
         <h1 class="heading-1">{{ displayValue.title }}</h1>
@@ -81,7 +81,6 @@ const onClose = () => {
   width: 100%;
   aspect-ratio: 2 / 2.8;
   flex: 1 0 33%;
-  border-radius: var(--base-border-radius);
   box-shadow: 0px 0px 4px 2px rgba(111, 132, 129, 0.5);
 }
 /* Add comma between item list */
