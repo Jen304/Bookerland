@@ -3,7 +3,7 @@
 const props = defineProps({
   list: {
     type: Array,
-    required: true,
+    default: () => [],
   },
 });
 </script>

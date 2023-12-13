@@ -12,8 +12,7 @@ const props = defineProps({
 const displayValue = computed(() => {
   if (!props.value) return {};
   const value = props.value.volumeInfo;
-
-  const publishedYear = value.publishedDate.split('-')[0];
+  const publishedYear = value.publishedDate ? value.publishedDate.split('-')[0] : '';
   return {
     title: value.title,
     subtitle: value.subtitle,
@@ -80,7 +79,7 @@ const onClose = () => {
 .book-detail img {
   width: 100%;
   aspect-ratio: 2 / 2.8;
-  flex: 1 0 33%;
+  flex: 1 0 33.33%;
   box-shadow: 0px 0px 4px 2px rgba(111, 132, 129, 0.5);
 }
 /* Add comma between item list */
