@@ -79,7 +79,7 @@ const onClose = () => {
 .book-detail img {
   width: 100%;
   aspect-ratio: 2 / 2.8;
-  flex: 1 0 33.33%;
+  flex: 0 0 33.33%;
   box-shadow: 0px 0px 4px 2px rgba(111, 132, 129, 0.5);
 }
 /* Add comma between item list */

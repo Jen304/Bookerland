@@ -15,19 +15,42 @@ const searchResult = ref([]);
 const isEmpty = ref(false);
 const isLoadingSearchResult = ref(false);
 const totalSearchResult = ref(0);
+const maxLimit = 20;
+// Get book list ref to do infinite scroll
+// get search result when it scroll
+const getSearchResultOnScroll = (element) => {
+  console.log('trigger scrolling');
+  const bookList = element.target;
+  if (!bookList) return;
+  const { scrollTop, scrollHeight, clientHeight } = bookList;
+  if (scrollTop + clientHeight >= scrollHeight - 100) {
+    getSearchResult(searchQuery.value);
+  }
+};
+
 const getSearchResult = async (searchQuery) => {
   if (isLoadingSearchResult.value) return;
+  const currentIndex = searchResult.value.length;
+  // if (currentIndex >= totalSearchResult.value) return;
   isLoadingSearchResult.value = true;
   // get search result from google book api
-  const requestQuery = new URLSearchParams({
-    q: searchQuery,
-  });
-  const result = await fetch(`https://www.googleapis.com/books/v1/volumes?${requestQuery}`);
-  const data = await result.json();
-  searchResult.value = data.items;
-  totalSearchResult.value = data.totalItems;
-  isLoadingSearchResult.value = false;
-  isEmpty.value = data.totalItems === 0;
+  try {
+    const requestQuery = new URLSearchParams({
+      q: searchQuery,
+      maxResults: maxLimit,
+      currentIndex,
+    });
+    console.log(requestQuery);
+    const result = await fetch(`https://www.googleapis.com/books/v1/volumes?${requestQuery}`);
+    const data = await result.json();
+    console.log(data);
+    searchResult.value = [...searchResult.value, ...data.items];
+    totalSearchResult.value = data.totalItems;
+    isLoadingSearchResult.value = false;
+    isEmpty.value = data.totalItems === 0;
+  } catch (error) {
+    console.log(error);
+  }
 };
 onMounted(() => {
   getSearchResult(searchQuery);
@@ -70,7 +93,10 @@ const bookDetailValue = ref(null);
           <h1 class="body-text-large text-semi-bold" v-if="totalSearchResult > 0">
             About {{ totalSearchResult }} books found
           </h1>
-          <ul :class="['no-list-style d-flex', $style['book-list']]">
+          <ul
+            :class="['no-list-style d-flex', $style['book-list']]"
+            @scroll="getSearchResultOnScroll"
+          >
             <li v-for="book in searchResult" :key="book.id">
               <BookCard :value="book" @click="openBookDetail(book)" />
             </li>
