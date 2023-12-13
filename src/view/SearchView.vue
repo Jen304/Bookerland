@@ -12,7 +12,7 @@ const props = defineProps({
 });
 const searchQuery = ref(props.query);
 const searchResult = ref([]);
-const isEmpty = ref([]);
+const isEmpty = ref(false);
 const isLoadingSearchResult = ref(false);
 const totalSearchResult = ref(0);
 const getSearchResult = async (searchQuery) => {
@@ -83,7 +83,7 @@ const bookDetailValue = ref(null);
           <p class="sub-heading-1">Please try another keyword</p>
         </div>
       </div>
-      <div class="col-7" v-show="isBookDetailOpen">
+      <div :class="['col-7', $style['book-detail']]" v-show="isBookDetailOpen">
         <BookDetail @close="closeBookDetail" :value="bookDetailValue" />
       </div>
     </main>
@@ -98,8 +98,14 @@ const bookDetailValue = ref(null);
   gap: calc(var(--base-spacing) * 3);
   flex-direction: column;
   margin-block: calc(var(--base-spacing) * 2);
+  max-height: 82vh;
+  overflow-y: auto;
 }
-.book-list .empty-result {
+.book-detail {
+  max-height: 88vh;
+  overflow-y: auto;
+}
+.empty-result {
   margin: auto;
   text-align: center;
   margin: auto;
