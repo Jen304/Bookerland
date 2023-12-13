@@ -82,7 +82,7 @@ const valueData = computed(() => {
   color: var(--color-neutral-500);
   /* Showing max 3 lines */
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-top: var(--base-spacing);

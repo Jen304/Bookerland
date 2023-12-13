@@ -87,6 +87,6 @@ const bookDetailValue = ref(null);
 .book-list {
   gap: calc(var(--base-spacing) * 3);
   flex-direction: column;
-  margin-top: calc(var(--base-spacing) * 2);
+  margin-block: calc(var(--base-spacing) * 2);
 }
 </style>
