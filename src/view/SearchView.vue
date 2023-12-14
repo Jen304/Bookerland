@@ -15,11 +15,10 @@ const searchResult = ref([]);
 const isEmpty = ref(false);
 const isLoadingSearchResult = ref(false);
 const totalSearchResult = ref(0);
-const maxLimit = 20;
+const maxLimit = 5;
 // Get book list ref to do infinite scroll
 // get search result when it scroll
 const getSearchResultOnScroll = (element) => {
-  console.log('trigger scrolling');
   const bookList = element.target;
   if (!bookList) return;
   const { scrollTop, scrollHeight, clientHeight } = bookList;
@@ -40,16 +39,14 @@ const getSearchResult = async (searchQuery) => {
       maxResults: maxLimit,
       currentIndex,
     });
-    console.log(requestQuery);
     const result = await fetch(`https://www.googleapis.com/books/v1/volumes?${requestQuery}`);
     const data = await result.json();
-    console.log(data);
-    searchResult.value = [...searchResult.value, ...data.items];
+    searchResult.value.push(...data.items);
     totalSearchResult.value = data.totalItems;
     isLoadingSearchResult.value = false;
     isEmpty.value = data.totalItems === 0;
   } catch (error) {
-    console.log(error);
+    console.warn(error);
   }
 };
 onMounted(() => {
@@ -100,8 +97,8 @@ const bookDetailValue = ref(null);
             <li v-for="book in searchResult" :key="book.id">
               <BookCard :value="book" @click="openBookDetail(book)" />
             </li>
+            <MainLoadingBar v-if="isLoadingSearchResult" />
           </ul>
-          <MainLoadingBar v-if="isLoadingSearchResult" />
         </div>
         <div :class="$style['empty-result']" v-if="isEmpty">
           <img src="@/asset/book-thinking.png" alt="empty result" />
