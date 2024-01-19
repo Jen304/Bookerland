@@ -8,13 +8,7 @@ const props = defineProps({
 });
 const valueData = computed(() => {
   const value = props.value;
-  return {
-    title: value.volumeInfo.title,
-    subtitle: value.volumeInfo.subtitle,
-    author: value.volumeInfo.authors,
-    img: value.volumeInfo.imageLinks.thumbnail,
-    description: value.volumeInfo.description,
-  };
+  return value;
 });
 </script>
 <template>

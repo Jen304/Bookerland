@@ -11,19 +11,9 @@ const props = defineProps({
 });
 const displayValue = computed(() => {
   if (!props.value) return {};
-  const value = props.value.volumeInfo;
-  const publishedYear = value.publishedDate ? value.publishedDate.split('-')[0] : '';
-  return {
-    title: value.title,
-    subtitle: value.subtitle,
-    author: value.authors,
-    img: value.imageLinks.thumbnail,
-    description: value.description,
-    year: publishedYear,
-    categories: value.categories,
-  };
+  return props.value;
 });
-const emit = defineEmits(['close']);
+const emit = defineEmits(['close', 'click']);
 const onClose = () => {
   emit('close');
 };

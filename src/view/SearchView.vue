@@ -39,9 +39,25 @@ const getSearchResult = async (searchQuery) => {
       maxResults: maxLimit,
       currentIndex,
     });
+    console.log(requestQuery.toString());
     const result = await fetch(`https://www.googleapis.com/books/v1/volumes?${requestQuery}`);
     const data = await result.json();
-    searchResult.value.push(...data.items);
+    const formattedData = data.items.map((item) => {
+      const { id, volumeInfo, categories, publishedDate } = item;
+      const publishedYear = publishedDate ? publishedDate.split('-')[0] : '';
+      const { title, subtitle, authors, description, imageLinks } = volumeInfo;
+      return {
+        id,
+        title,
+        subtitle,
+        authors,
+        description,
+        img: imageLinks ? imageLinks.thumbnail : '',
+        categories,
+        year: publishedYear,
+      };
+    });
+    searchResult.value.push(...formattedData);
     totalSearchResult.value = data.totalItems;
     isLoadingSearchResult.value = false;
     isEmpty.value = data.totalItems === 0;
@@ -50,7 +66,7 @@ const getSearchResult = async (searchQuery) => {
   }
 };
 onMounted(() => {
-  getSearchResult(searchQuery);
+  getSearchResult(searchQuery.value);
 });
 
 provide('searchQuery', searchQuery);

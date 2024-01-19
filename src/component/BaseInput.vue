@@ -19,7 +19,7 @@ const emit = defineEmits(['update:modelValue']);
 const hasClearButton = computed(() => props.clearable && inputValue.value.length > 0);
 // clear input value when clear button is clicked
 const clearInputValue = () => {
-  emit('update:modelValue', '');
+  inputValue.value = '';
 };
 
 const inputValue = computed({
