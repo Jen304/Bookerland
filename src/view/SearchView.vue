@@ -4,6 +4,9 @@ import MainLayout from './layout/MainLayout.vue';
 import MainLoadingBar from '@/component/MainLoadingBar.vue';
 import BookCard from '@/component/BookCard.vue';
 import BookDetail from '@/component/BookDetail.vue';
+import { searchBook } from '@/api/book-request';
+import { formatSearchData } from '@/util/book';
+
 const props = defineProps({
   query: {
     type: String,
@@ -34,33 +37,16 @@ const getSearchResult = async (searchQuery) => {
   isLoadingSearchResult.value = true;
   // get search result from google book api
   try {
-    const requestQuery = new URLSearchParams({
-      q: searchQuery,
-      maxResults: maxLimit,
+    const result = await searchBook({
+      query: searchQuery,
+      limit: maxLimit,
       currentIndex,
     });
-    console.log(requestQuery.toString());
-    const result = await fetch(`https://www.googleapis.com/books/v1/volumes?${requestQuery}`);
-    const data = await result.json();
-    const formattedData = data.items.map((item) => {
-      const { id, volumeInfo, categories, publishedDate } = item;
-      const publishedYear = publishedDate ? publishedDate.split('-')[0] : '';
-      const { title, subtitle, authors, description, imageLinks } = volumeInfo;
-      return {
-        id,
-        title,
-        subtitle,
-        authors,
-        description,
-        img: imageLinks ? imageLinks.thumbnail : '',
-        categories,
-        year: publishedYear,
-      };
-    });
-    searchResult.value.push(...formattedData);
-    totalSearchResult.value = data.totalItems;
+    const { total, items } = formatSearchData(result);
+    searchResult.value.push(...items);
+    totalSearchResult.value = total;
     isLoadingSearchResult.value = false;
-    isEmpty.value = data.totalItems === 0;
+    isEmpty.value = result.totalItems === 0;
   } catch (error) {
     console.warn(error);
   }
